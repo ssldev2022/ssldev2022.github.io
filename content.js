@@ -1,5 +1,108 @@
 const portfolioPosts = [
   {
+    "path": "projects/brixcon-v2/",
+    "category": "Projects",
+    "tag": "Brixcon",
+    "series": {
+      "id": "brixcon",
+      "part": 2
+    },
+    "title": "Brixcon Version 2 — Slack에서 웹 기반 운영 시스템으로",
+    "excerpt": "현장 보고와 발주를 연결하던 Slack 기반 도구에서, 직원이 자신의 업무와 기록을 직접 확인하고 처리하는 웹 기반 운영 시스템으로 확장하고 있습니다.",
+    "art": "http",
+    "label": "BRIXCON / VERSION 2",
+    "body": "Slack과 Google Workspace를 연결한 첫 번째 버전에 이어, 직원과 관리자가 역할에 맞는 업무를 처리하는 웹 기반 운영 시스템을 만들고 있습니다.",
+    "sourceNote": "Brixcon 시리즈 2편입니다. Slack 기반 업무 도구에서 웹 기반 운영 시스템으로 확장하는 과정을 기록합니다.",
+    "sections": [
+      [
+        "어떤 프로젝트인가요?",
+        [
+          "첫 번째 버전은 Brixcon의 반복 업무를 Slack과 Google Workspace로 연결하는 데서 시작했습니다. 현장 보고를 작성하고, 발주서를 만들고, 일정과 휴가 신청을 전달하는 흐름을 기존 도구 안에서 처리할 수 있도록 구성했습니다.",
+          "Version 2에서는 이 업무들을 회사 전용 웹 화면으로 옮기고 있습니다. 직원이 로그인하면 자신의 역할에 맞는 기능과 자료를 확인하고, 신청부터 조회·수정까지 한곳에서 처리할 수 있도록 만드는 것이 목표입니다. Brixcon과 NVY가 같은 앱을 사용하되, 회사별 접근과 업무 자료는 구분합니다."
+        ]
+      ],
+      [
+        "왜 웹 시스템으로 확장했나요?",
+        [
+          "Slack은 대화를 나누면서 업무를 시작하기 좋은 도구였습니다. 하지만 관리해야 할 기록이 늘어나면서, 대화와 별도로 현재 상태를 정리해 보여주는 화면이 필요해졌습니다.",
+          "직원에게는 자신의 급여와 휴가, 비용 정산을 확인하는 공간이 필요하고, 관리자에게는 여러 사람의 기록을 비교하고 조정하는 화면이 필요합니다. 누가 무엇을 볼 수 있는지, 어떤 항목을 직접 수정할 수 있는지도 업무마다 달랐습니다.",
+          "그래서 Version 2에서는 기능을 추가하는 것과 함께, 사용자별로 필요한 정보와 할 수 있는 일을 정리하는 것에 집중했습니다."
+        ]
+      ],
+      [
+        "무엇을 할 수 있나요?",
+        [
+          "현재 웹 시스템에는 휴가 신청과 승인, 근무시간과 주간 급여 계산, 비용 정산과 영수증 첨부, 발주서 생성·수정 등이 연결되어 있습니다. 급여 자료는 서명란이 있는 인쇄용 양식으로도 출력할 수 있습니다.",
+          "발주서는 번호를 발급하고 표지와 Invoice를 합쳐 PDF로 저장합니다. Brixcon은 현장별 발주를, NVY는 회사 공통 발주를 관리하도록 구분했습니다. 직원은 Settings에서 연락처와 비상연락처를 수정하고, 면허증이나 OSHA 카드 같은 문서를 등록할 수 있습니다.",
+          "접근 권한은 관리자·사무직·직영팀으로 나눴습니다. 공통 업무 자료와 개인 자료를 구분하고, 다른 직원의 급여나 개인 정산 정보는 일반 직원에게 공개하지 않도록 구성했습니다."
+        ]
+      ],
+      [
+        "기존 시스템은 어떻게 이어가나요?",
+        [
+          "기존 App Hub의 자료를 출발점으로 삼고, 필요한 업무부터 웹 기능으로 연결하고 있습니다. 첨부파일과 업무 문서는 Google Drive를 계속 사용하면서, 앱에서는 기록과 파일의 관계를 관리합니다.",
+          "현장 사진을 촬영 날짜에 따라 정리하는 자동화도 별도로 유지합니다. 사용자가 보는 웹 화면과 백그라운드 작업을 나누어, 화면을 열어두지 않아도 필요한 처리가 이어지도록 구성했습니다.",
+          "주요 기술은 Next.js, React, TypeScript, Supabase의 PostgreSQL, Google Drive와 Google Cloud입니다. 기존 업무를 한 번에 모두 교체하기보다, 연결된 기능의 동작을 확인하면서 전환하고 있습니다."
+        ]
+      ],
+      [
+        "어떻게 만들고 있나요?",
+        [
+          "저는 실제 업무에서 필요한 기능과 규칙을 정리하고, Codex와 함께 구현과 수정을 진행하고 있습니다. 화면을 사용해 보면서 어색한 부분을 고치고, 저장된 결과와 접근 범위가 의도한 대로 동작하는지도 확인합니다.",
+          "이번 버전에서는 작은 규칙들이 시스템 전체에 영향을 준다는 것을 더 자주 경험했습니다. 시급을 변경했을 때 과거 급여까지 바뀌면 안 되고, 저장 요청을 다시 보냈다고 발주서가 두 번 만들어져서도 안 됩니다. 같은 화면을 사용하더라도 직원마다 볼 수 있는 자료는 달라야 합니다.",
+          "Version 2는 이런 실제 운영의 조건들을 하나씩 반영하는 과정입니다. 현재 일부 기능은 운영에 반영됐고, 나머지는 기존 시스템과 함께 사용하며 전환하고 있습니다. 앞으로도 직접 사용하면서 필요한 부분을 다듬어갈 예정입니다."
+        ]
+      ]
+    ],
+    "en": {
+      "title": "Brixcon Version 2 — From Slack to a Web-Based Operations System",
+      "excerpt": "Expanding from Slack-based tools for field reports and purchase orders into a web-based operations system where employees can view and manage their own work and records.",
+      "body": "Building on the first version connecting Slack and Google Workspace, I’m developing a web-based operations system where employees and managers handle tasks according to their roles.",
+      "sourceNote": "Part 2 of the Brixcon series, documenting the move from Slack-based tools to a web-based operations system.",
+      "sections": [
+        [
+          "What is the project?",
+          [
+            "The first version began by connecting recurring work at Brixcon through Slack and Google Workspace. It brought field reports, purchase orders, schedules, and time-off requests into workflows within the tools the team already used.",
+            "In Version 2, I’m moving these workflows into dedicated web interfaces for the company. The goal is for employees to log in, see the features and records relevant to their roles, and submit, review, and edit requests in one place. Brixcon and NVY share the same app, while access and business records remain separated by company."
+          ]
+        ],
+        [
+          "Why expand into a web system?",
+          [
+            "Slack was a useful place to start work alongside a conversation. As the number of records grew, however, we needed screens that showed the current state of work separately from those conversations.",
+            "Employees need a place to check their own pay, time off, and expense reimbursements. Managers need screens for comparing and adjusting records across the team. Who can view which records, and which fields they can edit themselves, also varies by workflow.",
+            "Alongside adding features, Version 2 focuses on clarifying what information each user needs and what actions they can take."
+          ]
+        ],
+        [
+          "What can it do?",
+          [
+            "The web system currently connects time-off requests and approvals, work hours and weekly pay calculations, expense reimbursements with receipt attachments, and purchase-order creation and editing. Payroll records can also be printed in a form with signature fields.",
+            "Purchase orders receive a number, then combine a cover sheet and an invoice into a saved PDF. Brixcon manages orders by job site, while NVY manages company-wide orders. In Settings, employees can update their contact and emergency contact information and upload documents such as driver’s licenses or OSHA cards.",
+            "Access is divided among administrators, office staff, and in-house crews. Shared business records are separated from personal records, and regular employees cannot view other employees’ pay or personal reimbursement information."
+          ]
+        ],
+        [
+          "How does it connect to the existing system?",
+          [
+            "I’m starting with records from the existing App Hub and connecting the workflows we need to web features. Attachments and business documents remain in Google Drive, while the app manages the relationships between records and files.",
+            "The automation that organizes site photos by the date they were taken continues to run separately. By separating the web interface from background tasks, processing can continue without someone keeping a page open.",
+            "The main technologies are Next.js, React, TypeScript, PostgreSQL on Supabase, Google Drive, and Google Cloud. Rather than replacing every existing workflow at once, I’m making the transition while checking how each connected feature behaves."
+          ]
+        ],
+        [
+          "How am I building it?",
+          [
+            "I define the features and rules needed in day-to-day work, then implement and revise them with Codex. I use the screens to find awkward interactions and check that saved results and access boundaries behave as intended.",
+            "This version has given me more frequent reminders that small rules can affect the whole system. Changing an hourly rate must not change past pay. Resubmitting a save request must not create a duplicate purchase order. Even when employees use the same screen, the records they can see must depend on who they are.",
+            "Version 2 is a process of incorporating these operational requirements one by one. Some features are already in use, while others are being introduced alongside the existing system. I plan to keep refining it through direct use."
+          ]
+        ]
+      ]
+    }
+  },
+  {
     "path": "projects/slack-integration/",
     "category": "Projects",
     "tag": "Brixcon",
@@ -40,6 +143,10 @@ const portfolioPosts = [
           "I defined the workflows, reviewed approaches suggested by Codex, and worked through implementation and revisions with it. I’m now comparing the code with its actual behavior to better understand how requests travel through the system and where the results are stored."
         ]
       ]
+    },
+    "series": {
+      "id": "brixcon",
+      "part": 1
     }
   },
   {
