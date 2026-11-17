@@ -22,7 +22,7 @@ const englishCopy = {
  '2019.06 — 2022.03': 'Jun 2019 — Mar 2022',
  '2017.06 — 2019.03': 'Jun 2017 — Mar 2019',
  'Combat Engineer · Sergeant. 분대장으로 10명 규모의 팀을 이끌며 작업 계획과 실행을 조율했습니다.': 'Combat Engineer · Sergeant. Led a team of ten as squad leader, coordinating planning and execution.',
- '연결되는 곳': 'Connect', '만들고, 이해하고, 기록합니다.': 'Build. Understand. Document.',
+ '연결되는 곳': 'Connect',
  '초안 · 발행 전': 'Draft · Unpublished', '본문으로 이동': 'Skip to content'
 };
 function translateCopy(text) {
