@@ -106,7 +106,7 @@ const portfolioPosts = [
     "path": "projects/slack-integration/",
     "category": "Projects",
     "tag": "Brixcon",
-    "title": "Brixcon — Slack으로 연결하는 업무 흐름",
+    "title": "Brixcon Version 1 — Slack으로 연결하는 업무 흐름",
     "excerpt": "현장 보고부터 발주, 일정, 휴가 신청까지. Slack과 Google Workspace를 연결하는 내부 운영 시스템입니다.",
     "art": "slack",
     "label": "BRIXCON / OPERATIONS",
@@ -126,7 +126,7 @@ const portfolioPosts = [
       ]
     ],
     "en": {
-      "title": "Brixcon — Connecting operations through Slack",
+      "title": "Brixcon Version 1 — Connecting Operations Through Slack",
       "excerpt": "From daily reports to purchase orders, schedules, and time off. An internal operations system connecting Slack and Google Workspace.",
       "body": "An internal system that connects Brixcon’s field and office workflows through Slack and Google Workspace.",
       "sections": [
