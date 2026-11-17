@@ -46,7 +46,6 @@ const portfolioPosts = [
     "path": "reflections/what-to-delegate-to-ai/",
     "category": "Learning",
     "tag": "AI",
-    "contentLanguage": "ko",
     "title": "AI에게 맡길 일과, 내가 직접 해야 할 일",
     "excerpt": "결과물을 빨리 만드는 것과 내가 성장하는 것은 같은 일이 아니었다. AI와 함께 일하면서 그 사이의 기준을 찾고 있다.",
     "art": "notes",
@@ -82,13 +81,48 @@ const portfolioPosts = [
           "AI를 잘 쓰는 능력에는 일을 맡기는 능력뿐 아니라, 어떤 부분을 내 경험으로 남길지 고르는 능력도 포함되는 것 같다. 아직 그 경계를 명확하게 정하지는 못했다. 다만 다음 결과물을 만들 때는, 결과물과 함께 나에게 무엇이 남는지도 보고 싶다."
         ]
       ]
-    ]
+    ],
+    "en": {
+      "title": "What to Delegate to AI, and What to Do Myself",
+      "excerpt": "Building something quickly and growing as a developer turned out to be different things. Working with AI, I’m learning how to balance the two.",
+      "body": "As AI helps me do more, I find myself thinking more often about what I still need to do myself.",
+      "sourceNote": "Based on my CS 545 Week 2 reading response on Cocoa and my experience developing with AI.",
+      "sections": [
+        [
+          "The pace of building and the pace of understanding",
+          [
+            "When building internal tools for Brixcon, I started by thinking about what made the work difficult. I asked Codex about possible approaches and chose the options that seemed reasonable. I implemented them, tried them out, and revised what did not work. That process produced tools that actually worked.",
+            "How well I understood those tools was a separate question. I could explain which features were needed, but that did not necessarily mean I could explain how a request moved through the system or where to start looking when something failed. The pace of finishing a tool did not always match the pace of my understanding."
+          ]
+        ],
+        [
+          "When I delegate the trial and error too",
+          [
+            "While reading the paper on Cocoa, I particularly related to a participant’s observation that reading and trying things out can itself generate ideas. Trial and error often feels like a cost to reduce. Yet some things only become clear through doing: what I did not know, why my original question was incomplete, or how another approach came to mind.",
+            "Letting AI do that work can get me to a result quickly. Whether I can then explain the path I took, or find my way through a slightly different problem, needs a separate check. In an area I want to keep learning, I think I need to leave some of that process for myself."
+          ]
+        ],
+        [
+          "Different criteria for different tasks",
+          [
+            "That does not mean I want to make using less AI a goal in itself. Solving a real work problem and learning a new concept start with different purposes. Sometimes I need to build a tool quickly and try it out. At other times, I need to do the calculations and read the code myself, even if that takes longer.",
+            "The question I want to use as a guide goes beyond “Can AI do this task?” It is closer to “After I delegate this, what should I understand?” Even if I do not write every line of code myself, I want to understand how the features I choose work and have a basis for checking their results."
+          ]
+        ],
+        [
+          "Still working out my criteria",
+          [
+            "For now, I want to start by revisiting projects I have already built. Where does a single input from Slack go? What data is stored? What changes when something fails? I want to use a working tool as a starting point to fill the gaps in my understanding.",
+            "Using AI well seems to involve both delegating work and choosing which parts to keep as my own experience. I have not clearly drawn that boundary yet. But the next time I build something, I want to look at what stays with me as well as what gets produced."
+          ]
+        ]
+      ]
+    }
   },
   {
     "path": "reflections/making-importance-understood/",
     "category": "Learning",
     "tag": "HCI",
-    "contentLanguage": "ko",
     "title": "구체화, 그리고 HCI (Human-Computer Interaction)",
     "excerpt": "조직에서 느꼈던 막연한 중요함을, 다른 사람도 이해하고 함께 다룰 수 있는 문제로 바꾸는 일에 대해.",
     "art": "portfolio",
@@ -126,7 +160,40 @@ const portfolioPosts = [
       ]
     ],
     "en": {
-      "title": "Making Ideas Concrete — And HCI"
+      "title": "Making Ideas Concrete — And HCI",
+      "excerpt": "On turning a vague sense that something matters within an organization into a problem other people can understand and work on together.",
+      "body": "There was a gap between feeling that something mattered and communicating its importance to someone else.",
+      "sourceNote": "Based on ideas from my CS 545 Week 1 reading response.",
+      "sections": [
+        [
+          "Feeling something and communicating it",
+          [
+            "Across different groups and organizations, I noticed that some things could have a large effect on the whole without being easy to see. I felt sure they mattered, but putting that feeling into words for someone else was difficult. The importance I felt did not always come across with the same weight.",
+            "In those moments, simply insisting more strongly on my feeling probably would not help. I needed to explain what I had observed, who was affected and how, and what we might change together. Connecting those pieces felt harder than I had expected."
+          ]
+        ],
+        [
+          "HCI began to look broader than UI/UX",
+          [
+            "Before this course, I mainly thought of HCI (Human-Computer Interaction) as a field concerned with making UI/UX easy to use. But the reading for my first response asked what makes good research and how we can understand different problems and contributions using shared criteria.",
+            "Those questions overlapped with difficulties I had experienced in organizations. Something that obviously matters to one group may not seem as important to another. For people with different perspectives to make judgments together, I began to think they needed a common language for explaining their contributions and the problems they saw."
+          ]
+        ],
+        [
+          "Shared criteria still leave questions",
+          [
+            "At the same time, I wondered who gets to decide what is important. The same problem can carry different weight depending on someone’s position and experience. Some problems are also hard to compare numerically. If we rely only on what is easy to measure, what might we leave out?",
+            "I want to distinguish between developing shared criteria and believing those criteria can explain everything. They can give us a starting point for understanding one another’s thinking. But the experiences and context that fall outside them do not disappear."
+          ]
+        ],
+        [
+          "The ability I want to develop",
+          [
+            "What I want to practice in this course is turning the impressions in my head into problems I can explain. Does a problem require clearer concepts, a change in design, or an implementation to test an idea? I want to take a step beyond a vague feeling that something matters.",
+            "This is also close to the kind of generalist I hope to become: someone who connects the problems different people see and explains them in a way that lets people work on them together. I am still developing that ability, and writing about my experiences seems like one way to practice it."
+          ]
+        ]
+      ]
     }
   }
 ];
