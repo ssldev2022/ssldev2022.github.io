@@ -5,10 +5,29 @@
  try {saved=localStorage.getItem(key);} catch {}
  window.portfolioLanguage=saved==='ko'?'ko':'en';
  const bar=document.createElement('header');bar.className='language-bar';
- bar.innerHTML='<div class="language-inner"><nav class="header-links" aria-label="Contact and resume"><a href="'+resumeURL+'" target="_blank" rel="noopener noreferrer">Resume</a><a href="https://www.linkedin.com/in/ssldev2022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:slee56@stevens.edu">Email</a></nav><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
+ bar.innerHTML='<div class="language-inner"><nav class="header-links" aria-label="Contact and resume"><a href="'+resumeURL+'" target="_blank" rel="noopener noreferrer">Resume</a><a href="https://www.linkedin.com/in/ssldev2022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><button type="button" class="copy-email">Email</button></nav><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
  document.body.prepend(bar);
+ const email='slee56@stevens.edu';
+ const toast=document.createElement('div');
+ toast.className='copy-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');toast.setAttribute('aria-atomic','true');
+ document.body.append(toast);
+ let toastTimer, toastState='';
+ const messages={en:{success:'Copied to clipboard.',error:'Could not copy. Email: '+email},ko:{success:'클립보드에 복사되었습니다.',error:'복사하지 못했습니다. 이메일: '+email}};
+ function updateToast(){toast.textContent=toastState?messages[window.portfolioLanguage][toastState]:'';}
+ function showToast(state){
+  clearTimeout(toastTimer);toastState=state;updateToast();toast.classList.add('is-visible');
+  toastTimer=setTimeout(()=>{toast.classList.remove('is-visible');toastState='';toast.textContent='';},3500);
+ }
+ bar.querySelector('.copy-email').addEventListener('click',async()=>{
+  try {
+   await navigator.clipboard.writeText(email);
+   showToast('success');
+  } catch {showToast('error');}
+ });
  function apply(language,announce=false) {
   window.portfolioLanguage=language;document.documentElement.lang=language;
+  bar.querySelector('.copy-email').setAttribute('aria-label',language==='ko'?'이메일 주소 복사':'Copy email address');
+  updateToast();
   bar.querySelectorAll('[data-locale]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.locale===language)));
   document.querySelectorAll('[data-language]').forEach(el=>{el.hidden=el.dataset.language!==language;});
   const title=document.querySelector('title');
