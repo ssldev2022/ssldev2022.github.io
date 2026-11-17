@@ -1,10 +1,11 @@
 (() => {
+ const resumeURL=new URL('Shinil_Lee-Resume-2026.pdf?v=a24d4b4f695b',document.currentScript.src).href;
  const key='sean-portfolio-language';
  let saved;
  try {saved=localStorage.getItem(key);} catch {}
  window.portfolioLanguage=saved==='ko'?'ko':'en';
  const bar=document.createElement('header');bar.className='language-bar';
- bar.innerHTML='<div class="language-inner"><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
+ bar.innerHTML='<div class="language-inner"><nav class="header-links" aria-label="Contact and resume"><a href="'+resumeURL+'" target="_blank" rel="noopener noreferrer">Resume</a><a href="https://www.linkedin.com/in/ssldev2022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="mailto:slee56@stevens.edu">Email</a></nav><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
  document.body.prepend(bar);
  function apply(language,announce=false) {
   window.portfolioLanguage=language;document.documentElement.lang=language;
