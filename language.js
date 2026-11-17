@@ -5,8 +5,24 @@
  try {saved=localStorage.getItem(key);} catch {}
  window.portfolioLanguage=saved==='ko'?'ko':'en';
  const bar=document.createElement('header');bar.className='language-bar';
- bar.innerHTML='<div class="language-inner"><nav class="header-links" aria-label="Contact and resume"><a href="'+resumeURL+'" target="_blank" rel="noopener noreferrer">Resume</a><a href="https://www.linkedin.com/in/ssldev2022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><button type="button" class="copy-email">Email</button></nav><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
+ bar.innerHTML='<div class="language-inner"><nav class="header-links" aria-label="Contact and resume"><button type="button" class="open-resume" aria-haspopup="dialog">Resume</button><a href="https://www.linkedin.com/in/ssldev2022/" target="_blank" rel="noopener noreferrer">LinkedIn</a><button type="button" class="copy-email">Email</button></nav><div class="language-options" role="group" aria-label="Language / 언어"><button type="button" data-locale="en" lang="en" aria-label="English"><span aria-hidden="true">🇺🇸</span> EN</button><button type="button" data-locale="ko" lang="ko" aria-label="한국어"><span aria-hidden="true">🇰🇷</span> KO</button></div></div>';
  document.body.prepend(bar);
+ const resumeDialog=document.createElement('dialog');
+ resumeDialog.className='resume-dialog';resumeDialog.setAttribute('aria-labelledby','resume-dialog-title');
+ resumeDialog.innerHTML='<div class="resume-dialog-toolbar"><h2 id="resume-dialog-title">Resume</h2><a class="resume-external" href="'+resumeURL+'" target="_blank" rel="noopener noreferrer"></a><button type="button" class="resume-close" autofocus>×</button></div><iframe class="resume-frame"></iframe>';
+ document.body.append(resumeDialog);
+ const resumeFrame=resumeDialog.querySelector('.resume-frame');
+ const resumeButton=bar.querySelector('.open-resume');
+ resumeButton.addEventListener('click',()=>{
+  if(!resumeFrame.getAttribute('src'))resumeFrame.src=resumeURL+'#view=FitH';
+  resumeDialog.showModal();document.body.classList.add('resume-open');
+ });
+ resumeDialog.querySelector('.resume-close').addEventListener('click',()=>resumeDialog.close());
+ let backdropPress=false;
+ function outsideDialog(event){const r=resumeDialog.getBoundingClientRect();return event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom;}
+ resumeDialog.addEventListener('pointerdown',event=>{backdropPress=event.target===resumeDialog&&outsideDialog(event);});
+ resumeDialog.addEventListener('click',event=>{if(backdropPress&&event.target===resumeDialog&&outsideDialog(event))resumeDialog.close();backdropPress=false;});
+ resumeDialog.addEventListener('close',()=>{document.body.classList.remove('resume-open');resumeButton.focus();});
  const email='slee56@stevens.edu';
  const toast=document.createElement('div');
  toast.className='copy-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');toast.setAttribute('aria-atomic','true');
@@ -27,6 +43,10 @@
  function apply(language,announce=false) {
   window.portfolioLanguage=language;document.documentElement.lang=language;
   bar.querySelector('.copy-email').setAttribute('aria-label',language==='ko'?'이메일 주소 복사':'Copy email address');
+  resumeDialog.querySelector('#resume-dialog-title').textContent=language==='ko'?'이력서':'Resume';
+  resumeDialog.querySelector('.resume-external').textContent=language==='ko'?'새 탭에서 열기 ↗':'Open in new tab ↗';
+  resumeDialog.querySelector('.resume-close').setAttribute('aria-label',language==='ko'?'이력서 닫기':'Close resume');
+  resumeFrame.title=language==='ko'?'이력서 PDF':'Resume PDF';
   updateToast();
   bar.querySelectorAll('[data-locale]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.locale===language)));
   document.querySelectorAll('[data-language]').forEach(el=>{el.hidden=el.dataset.language!==language;});
