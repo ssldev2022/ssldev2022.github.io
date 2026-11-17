@@ -107,47 +107,132 @@ const portfolioPosts = [
     "category": "Projects",
     "tag": "Brixcon",
     "title": "Brixcon Version 1 — Slack으로 연결하는 업무 흐름",
-    "excerpt": "현장 보고부터 발주, 일정, 휴가 신청까지. Slack과 Google Workspace를 연결하는 내부 운영 시스템입니다.",
+    "excerpt": "메시지를 보낸 뒤에도 남는 기록·문서·사진 정리. 실제 업무의 빈틈을 Slack과 Google Workspace로 연결하며 발견한 규칙과 시행착오를 돌아봅니다.",
     "art": "slack",
     "label": "BRIXCON / OPERATIONS",
-    "body": "Brixcon의 현장·사무 업무를 Slack과 Google Workspace로 연결하는 내부 운영 시스템입니다.",
+    "body": "제가 해결하고 싶었던 것은 이 사이에 남는 일이었습니다. 대화에 적힌 내용을 기록으로 옮기고, 파일을 알맞은 곳에 정리하고, 나중에 다시 찾을 수 있도록 연결하는 일입니다. 그래서 첫 번째 버전은 팀이 쓰는 Slack과 Google Workspace 안에서 이 흐름을 이어보는 프로젝트로 시작했습니다.",
     "sections": [
       [
-        "어떤 프로젝트인가요?",
-        "Brixcon의 현장·사무 업무를 Slack에서 처리하고, 관련 기록과 파일을 Google Sheets와 Drive로 연결하는 프로젝트입니다. 일일 보고, 발주서, 현장 일정, 휴가 신청처럼 반복해서 사용하는 업무 흐름을 다룹니다."
+        "업무를 전달한 다음에도 일이 남아 있었다",
+        [
+          "Brixcon의 현장과 사무실은 일일 보고, 발주, 일정, 휴가 신청처럼 서로 연결된 일을 처리합니다. 보고 내용을 전달하는 것만으로 업무가 끝나지는 않습니다. 어느 현장의 어느 날짜 기록인지 남겨야 하고, 관련 사진과 문서를 찾을 수 있어야 하며, 수정된 내용도 다음 사람이 확인할 수 있어야 합니다.",
+          "제가 해결하고 싶었던 것은 이 사이에 남는 일이었습니다. 대화에 적힌 내용을 기록으로 옮기고, 파일을 알맞은 곳에 정리하고, 나중에 다시 찾을 수 있도록 연결하는 일입니다. 그래서 첫 번째 버전은 팀이 쓰는 Slack과 Google Workspace 안에서 이 흐름을 이어보는 프로젝트로 시작했습니다."
+        ]
       ],
       [
-        "무엇을 할 수 있나요?",
-        "Slack에서 일일 보고를 작성·수정하고, 발주서를 관리하거나 현장 일정을 공유할 수 있도록 구성했습니다. 휴가 신청과 승인 흐름, 현장 사진을 날짜별로 정리하는 기능도 포함합니다. 기능마다 운영·검증 범위는 다르며, 모든 기능이 같은 수준으로 검증된 것은 아닙니다."
+        "Slack을 입구로, Sheets와 Drive를 기록의 장소로",
+        [
+          "처음부터 모든 기능을 갖춘 새 앱을 만들기보다, 업무를 시작하는 곳과 결과를 보관하는 곳을 연결했습니다. Slack에서는 내용을 입력하고 확인하며, Google Sheets에는 정리된 기록을, Google Drive에는 사진과 PDF 같은 파일을 남기는 방식입니다.",
+          "각 도구의 역할을 나누니 무엇을 연결해야 하는지도 구체적으로 보였습니다. 메시지를 받는 기능만으로는 부족했습니다. 입력한 현장이 저장할 폴더와 연결되어야 하고, 날짜와 작성자가 기록에 남아야 하며, 처리 결과를 사용자가 다시 확인할 수 있어야 했습니다. 기존 Forms와 Apps Script 업무도 유지하면서 필요한 흐름부터 이어갔습니다."
+        ]
       ],
       [
-        "어떻게 만들고 있나요?",
-        "저는 필요한 업무와 사용 흐름을 정리하고, Codex가 제안한 방법을 검토하며 구현과 수정을 진행했습니다. 지금은 실제 코드와 동작을 대조하면서, 요청이 어떻게 전달되고 결과가 어디에 저장되는지 이해를 넓히고 있습니다."
+        "일일 보고 하나를 끝까지 따라가며",
+        [
+          "일일 보고를 예로 들면, 현장·날짜·작업 내용·근무시간을 입력하는 화면은 시작점입니다. 그다음에는 입력을 검사하고 기록을 저장하며, 저장된 내용을 다시 열어 수정할 수 있어야 합니다. 보고서가 필요할 때는 기록을 바탕으로 PDF를 만들고 현장 폴더에서 찾을 수 있도록 연결했습니다.",
+          "이 과정을 만들면서 ‘전송됨’과 ‘업무가 완료됨’이 다르다는 점이 분명해졌습니다. Slack에서 응답이 보였더라도 저장 결과까지 확인해야 했고, 보고서를 수정했다면 PDF가 어느 시점의 내용을 담고 있는지도 구분해야 했습니다.",
+          "그래서 기능을 확인할 때 입력 화면만 보지 않고, 남은 기록과 생성된 파일을 함께 확인했습니다. 기능의 단위를 버튼 하나에서 입력·저장·조회·수정으로 이어지는 업무 전체로 넓혀 본 경험이었습니다."
+        ]
+      ],
+      [
+        "발주와 휴가로 넓어지면서 드러난 규칙",
+        [
+          "발주는 번호가 있는 문서가 남아야 하는 업무입니다. 현장에 맞는 PO 번호를 발급하고, 표지와 Invoice를 합친 PDF를 해당 폴더에 저장하는 흐름으로 연결했습니다. 문서가 만들어졌다는 사실과 나중에 다시 찾을 수 있다는 조건을 함께 다뤄야 했습니다.",
+          "휴가 신청에는 다른 규칙이 있었습니다. 신청서를 전달하는 것과 승인 상태가 정해지는 것은 별개이고, 승인 결과는 관련 기록과 일정에 연결되어야 합니다. 현장 일정 역시 예정과 완료를 구분해 보여줄 필요가 있었습니다.",
+          "겉으로는 모두 ‘입력하고 저장하는 기능’처럼 보이지만, 실제로는 업무마다 완료의 기준이 달랐습니다. 공통 화면을 만드는 것보다 먼저 어떤 정보를 남기고 누가 다음 행동을 하는지 정리해야 한다는 것을 배웠습니다."
+        ]
+      ],
+      [
+        "사진 정리는 작은 자동화가 아니었다",
+        [
+          "사진은 폴더에 들어오는 순간보다 나중에 다시 찾는 순간을 생각해야 했습니다. 어느 현장의 사진인지, 언제 촬영했는지에 따라 정리할 수 있어야 보고서와 함께 사용할 수 있기 때문입니다. 현장별 사진 Inbox에서 JPG/JPEG를 받아 촬영 날짜의 폴더로 옮기는 흐름을 만들었습니다.",
+          "여기서 날짜 기준이 중요해졌습니다. 업로드 날짜와 촬영 날짜는 같지 않을 수 있어 EXIF의 촬영 정보를 기준으로 삼았습니다. 촬영 날짜를 확인할 수 없는 파일은 임의의 날짜로 분류하지 않고, 원본 위치에 남겨 사람이 확인하도록 했습니다.",
+          "정상 처리에서도 원본을 새 파일로 복사하는 대신 같은 파일을 이름 변경·이동하도록 구성했습니다. 이후 실제 파일 ID와 내용이 유지되는지 확인했습니다. 자동화의 가치는 많이 옮기는 데만 있는 것이 아니라, 무엇을 근거로 옮겼는지 설명할 수 있는 데도 있었습니다."
+        ]
+      ],
+      [
+        "Codex와 만들되, 업무 판단은 직접",
+        [
+          "저는 실제 업무에서 필요한 기능과 규칙을 정리하고, Codex와 함께 구현과 수정을 진행했습니다. 가능한 방법을 비교하고, 화면을 사용해 보고, 기대한 결과가 나오지 않으면 요구사항과 구현을 다시 확인하는 과정이 반복됐습니다.",
+          "그 과정에서 질문도 바뀌었습니다. 처음에는 ‘이 기능을 만들 수 있나?’를 물었다면, 점차 ‘저장 도중 실패하면 무엇이 남나?’, ‘같은 요청을 다시 보내면 어떻게 되나?’, ‘어떤 기록을 원본으로 볼 것인가?’를 묻게 됐습니다. 이런 질문은 실제 업무 맥락을 알아야 구체적으로 답할 수 있었습니다.",
+          "동작하는 결과물을 만드는 속도와 제가 구조를 이해하는 속도가 항상 같지는 않았습니다. 요청이 어디로 가고 어떤 데이터가 남는지 직접 설명할 수 있도록 이해를 보완하는 과제도 남았습니다. AI가 구현을 도와도, 업무 규칙을 결정하고 결과를 판단하는 제 역할은 남아 있었습니다."
+        ]
+      ],
+      [
+        "V1에서 남은 것, 그리고 V2로 이어진 질문",
+        [
+          "V1에서 만든 것은 현장 보고, 발주, 일정, 휴가와 파일 정리를 연결하는 업무 흐름입니다. 기능마다 운영·검증 범위가 달라 전체를 동일하게 완성됐다고 말할 수는 없지만, 입력 이후 어디에 무엇이 남아야 하는지는 훨씬 구체적으로 정리할 수 있었습니다.",
+          "업무를 연결하고 나니 다음 필요도 보였습니다. 대화 속에서 일을 시작하는 것뿐 아니라, 쌓인 기록의 현재 상태를 한눈에 보고 싶었습니다. 직원은 자신의 기록을, 관리자는 팀 전체의 상태를 확인해야 하고, 같은 자료라도 접근할 수 있는 범위가 달라야 했습니다.",
+          "이 질문이 웹 기반 운영 시스템인 Version 2로 이어졌습니다. V1은 그 과정에서 업무의 규칙을 발견하고, 기존 도구 사이의 연결을 실제로 만들어 본 첫 단계였습니다."
+        ]
       ]
     ],
     "en": {
       "title": "Brixcon Version 1 — Connecting Operations Through Slack",
-      "excerpt": "From daily reports to purchase orders, schedules, and time off. An internal operations system connecting Slack and Google Workspace.",
-      "body": "An internal system that connects Brixcon’s field and office workflows through Slack and Google Workspace.",
+      "excerpt": "The records, documents, and photos that still need attention after a message is sent. How connecting Slack and Google Workspace revealed the rules behind everyday operations.",
+      "body": "That work between steps was what I wanted to address: turning a conversation into a record, putting files in the right place, and keeping the pieces connected so they could be found later. Version 1 began as a way to connect those steps within Slack and Google Workspace, tools the team already used.",
       "sections": [
         [
-          "What is the project?",
-          "This project brings Brixcon’s field and office workflows into Slack, connecting the associated records and files to Google Sheets and Drive. It covers recurring tasks such as daily reports, purchase orders, site schedules, and time-off requests."
+          "The work continued after the message was sent",
+          [
+            "Field and office work at Brixcon involves connected tasks: daily reports, purchase orders, schedules, and time-off requests. Sending an update does not finish the job. It still needs a site and date, a way to find the related photos and documents, and a way for the next person to see revisions.",
+            "That work between steps was what I wanted to address: turning a conversation into a record, putting files in the right place, and keeping the pieces connected so they could be found later. Version 1 began as a way to connect those steps within Slack and Google Workspace, tools the team already used."
+          ]
         ],
         [
-          "What does it do?",
-          "The system supports creating and editing daily reports, managing purchase orders, and sharing site schedules in Slack. It also includes time-off requests and approvals, along with organizing site photos by date. Operational and validation coverage varies by feature; not every workflow has been verified to the same extent."
+          "Slack for starting work, Sheets and Drive for keeping it",
+          [
+            "Instead of beginning with an entirely new application, I connected where work started with where its results were kept. Slack provided a place to enter and review information, Google Sheets held structured records, and Google Drive held files such as photos and PDFs.",
+            "Separating those roles made the integration requirements concrete. Receiving a message was only one step. The selected site had to map to the right folder, dates and authors had to remain attached to records, and users needed a way to check the result. Existing Forms and Apps Script workflows stayed in place while I connected the workflows we needed."
+          ]
         ],
         [
-          "How am I building it?",
-          "I defined the workflows, reviewed approaches suggested by Codex, and worked through implementation and revisions with it. I’m now comparing the code with its actual behavior to better understand how requests travel through the system and where the results are stored."
+          "Following one daily report all the way through",
+          [
+            "For a daily report, entering the site, date, work description, and hours is the starting point. The input then needs to be checked and saved, and the saved report needs to remain available for review and editing. When a document is needed, the workflow generates a PDF from the record and connects it to the site folder.",
+            "Building this made the difference between “sent” and “finished” more concrete. A response in Slack did not by itself prove that the record had been saved. If a report changed, we also needed to distinguish the current record from the version represented by its PDF.",
+            "I therefore checked the saved records and generated files alongside the input screen. I began treating a feature as the whole path from entry through saving, retrieval, and revision."
+          ]
+        ],
+        [
+          "Purchase orders and time off exposed different rules",
+          [
+            "A purchase order needs to leave behind a numbered document. I connected site-specific PO numbering with a workflow that combines a cover sheet and invoice into a PDF and saves it in the appropriate folder. Creating the document and making it retrievable later were both part of the job.",
+            "Time off introduced a different set of rules. Submitting a request and approving it are separate steps, and the decision needs to connect to the relevant records and calendar. Site schedules also need to distinguish planned dates from completed work.",
+            "These workflows can all look like forms that save data, yet each has a different definition of completion. I learned to identify what needs to be recorded and who acts next before trying to give every workflow the same interface."
+          ]
+        ],
+        [
+          "Organizing photos was not a small automation",
+          [
+            "With site photos, I needed to think beyond the moment a file arrived. Finding it later depends on knowing where and when it was taken. I built a workflow that accepts JPG/JPEG files from a site-specific photo inbox and moves them into folders for their capture dates.",
+            "The date rule mattered: the upload date may differ from the capture date. I used the capture information in EXIF. When a valid capture date is unavailable, the file stays in its original location for someone to check instead of being assigned a guessed date.",
+            "For valid files, the workflow renames and moves the same file rather than creating a new copy. I checked that the file ID and contents remained intact. Useful automation needs a clear reason for each action, as well as the ability to perform it."
+          ]
+        ],
+        [
+          "Building with Codex, while owning the operational decisions",
+          [
+            "I defined the required workflows and rules, then worked with Codex on implementation and revisions. I compared approaches, tried the screens, and revisited the requirements and code whenever the result differed from what the work needed.",
+            "My questions changed along the way. “Can this feature be built?” became “What remains if saving fails?”, “What happens if the same request is sent again?”, and “Which record should be treated as the source of truth?” Answering those questions required an understanding of the work itself.",
+            "The speed of producing a working result did not always match the speed of my understanding. I still needed to deepen my understanding enough to explain where requests went and what data remained. Even with AI helping implement the system, defining the rules and judging the outcome remained my responsibility."
+          ]
+        ],
+        [
+          "What V1 established, and the question that led to V2",
+          [
+            "V1 connected workflows for field reports, purchasing, schedules, time off, and file organization. Operational and validation coverage varies by feature, so I would not describe every part as equally complete. What became much clearer was what each input needed to leave behind and where it belonged.",
+            "Connecting the workflows also exposed the next need: a view of the current state of accumulated records, alongside the conversations that started them. Employees need to see their own records, managers need a broader view, and access must depend on the person using the system.",
+            "That question led to Version 2, a web-based operations system. V1 was the first step in discovering the operational rules and turning connections between existing tools into working workflows."
+          ]
         ]
       ]
     },
     "series": {
       "id": "brixcon",
       "part": 1
-    }
+    },
+    "published": true
   },
   {
     "path": "reflections/what-to-delegate-to-ai/",
