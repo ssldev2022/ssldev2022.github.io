@@ -1,5 +1,6 @@
 // Exact UI copy pairs; category keys and URLs stay language-independent.
 const englishCopy = {
+ '이력서 보기 (PDF) ↗': 'View Resume (PDF) ↗',
  '안녕하세요, Sean Shinil Lee입니다.': 'Hi, I’m Sean Shinil Lee.',
  'Sean의 개발 노트': 'Sean’s Development Notes',
  '© 2026 Sean의 개발 노트': '© 2026 Sean’s Development Notes',
